@@ -4,22 +4,22 @@ import { PinContainer } from "@/components/ui/3d-pin"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Porfolio",
     description: "A modern e-commerce platform built with React, Node.js, and MongoDB.",
     tags: ["React", "Node.js", "MongoDB", "Express"],
-    image: "https://placehold.co/600x400/121212/ffffff?text=E-Commerce+Platform",
+    image: "https://drive.google.com/file/d/1SdPLJtvYglbqEG5_-tEIL3EHlXitwEp5/view?usp=drive_link",
   },
   {
-    title: "Weather Dashboard",
+    title: "Mesho App",
     description: "A real-time weather dashboard with interactive maps and forecasts.",
     tags: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-    image: "https://placehold.co/600x400/121212/ffffff?text=Weather+Dashboard",
+    image: "https://drive.google.com/file/d/1ekhcYm32OJwn66AWYb7a1kH3MiGkB0UI/view?usp=drive_link",
   },
   {
-    title: "Task Management App",
+    title: "Q-trip",
     description: "A collaborative task management application with real-time updates.",
     tags: ["React", "Firebase", "Redux", "Material UI"],
-    image: "https://placehold.co/600x400/121212/ffffff?text=Task+Management",
+    image: "https://drive.google.com/file/d/11LmxgVIef7WXnxXZhargrhIK66_dUKZI/view?usp=drive_link",
   },
 ]
 

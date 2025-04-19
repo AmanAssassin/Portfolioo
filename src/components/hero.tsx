@@ -50,7 +50,7 @@ export function Hero() {
                 <a href="#projects">View My Work</a>
               </ButtonGlow>
             <ButtonGlow className="bg-black text-white hover:bg-gray-800 transition duration-300">
-  <a href="#contact" className="text-white hover:text-gray-300">Resume</a>
+  <a href="https://drive.google.com/file/d/1fAyOFkD2eL5eOXhyXRcNjKexaLrSk3oh/view?usp=sharing" target="blank" className="text-white hover:text-gray-300">Resume</a>
 </ButtonGlow>
             </div>
             
