@@ -1,25 +1,29 @@
 
 import { ButtonGlow } from "@/components/ui/button-glow"
 import { PinContainer } from "@/components/ui/3d-pin"
+import meshoImg from "../asset/meshop.png";
+
+import portfolioImg from "../asset/portfolio.png";
+import qtripImg from "../asset/qtrip.png";
 
 const projects = [
   {
     title: "Porfolio",
     description: "A modern e-commerce platform built with React, Node.js, and MongoDB.",
     tags: ["React", "Node.js", "MongoDB", "Express"],
-    image: "https://drive.google.com/file/d/1SdPLJtvYglbqEG5_-tEIL3EHlXitwEp5/view?usp=drive_link",
+    image: portfolioImg,
   },
   {
     title: "Mesho App",
     description: "A real-time weather dashboard with interactive maps and forecasts.",
     tags: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-    image: "https://drive.google.com/file/d/1ekhcYm32OJwn66AWYb7a1kH3MiGkB0UI/view?usp=drive_link",
+    image: meshoImg,
   },
   {
     title: "Q-trip",
     description: "A collaborative task management application with real-time updates.",
     tags: ["React", "Firebase", "Redux", "Material UI"],
-    image: "https://drive.google.com/file/d/11LmxgVIef7WXnxXZhargrhIK66_dUKZI/view?usp=drive_link",
+    image: qtripImg,
   },
 ]
 
