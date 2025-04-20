@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <a href="#" className="text-xl font-bold tracking-tighter text-white">
-              Amit<span className="text-indigo-500">.</span>
+              Aman<span className="text-indigo-500">.</span>
             </a>
           </div>
           
