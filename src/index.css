@@ -156,3 +156,27 @@ html {
 * {
   transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3s, opacity 0.3s;
 }
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.25rem; /* reduce padding on small screens */
+    text-align: left; /* better alignment */
+  }
+
+  .card .buttons,
+  .card .buttons a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: static !important;
+    opacity: 1 !important;
+    width: 100%;
+  }
+
+  .card .buttons a {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
