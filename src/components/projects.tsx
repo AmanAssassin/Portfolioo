@@ -4,6 +4,8 @@ import { Globe2, Github } from "lucide-react";
 import meshoImg from "../asset/meshop.png";
 import portfolioImg from "../asset/portfolio.png";
 import qtripImg from "../asset/qtrip.png";
+import cryptoImg from "../asset/crypto_img.png";
+
 
 const projects = [
   {
@@ -13,6 +15,14 @@ const projects = [
     image: portfolioImg,
     link: "https://portfolio-xi-sooty-88.vercel.app/",
     github: "https://github.com/aman-webdev/portfolio",
+  },
+  {
+    title: "Crypto Market",
+    description: "Crypto dashboard with graph",
+    tags: ["React", "Firebase", "Tailwind CSS", "Framer Motion"],
+    image: cryptoImg,
+    link: "https://crypto-market-rho.vercel.app/",
+    github: "https://github.com/AmanAssassin/Crypto-Market",
   },
   {
     title: "Mesho App",
@@ -30,6 +40,7 @@ const projects = [
     link: "https://qtrips-dynamic.netlify.app/",
     github: "https://github.com/aman-webdev/qtrip-dynamic",
   },
+  
 ];
 
 export function Projects() {
