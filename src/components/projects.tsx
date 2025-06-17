@@ -26,7 +26,7 @@ const projects = [
   },
   {
     title: "Mesho App",
-    description: "E-commerce platform with cart functionality",
+    description: "E-commerce platform with cart functionality ",
     tags: ["React", "Context API", "Styled Components"],
     image: meshoImg,
     link: "https://shop-cart-hazel-one.vercel.app/",
@@ -40,7 +40,7 @@ const projects = [
     link: "https://qtrips-dynamic.netlify.app/",
     github: "https://github.com/aman-webdev/qtrip-dynamic",
   },
-  
+  //new project goes here
 ];
 
 export function Projects() {
