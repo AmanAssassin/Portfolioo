@@ -1,0 +1,156 @@
+.timeline-section {
+  position: relative;
+  padding: 120px 0;
+  background: #0d1117;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+.timeline-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4f46e5;
+  margin-bottom: 80px;
+}
+
+.sticky-year {
+  position: sticky;
+  top: 20px;
+  background: #0d1117;
+  z-index: 999;
+  font-size: 1.2rem;
+  padding: 8px 20px;
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.timeline-wrapper {
+  position: relative;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.vertical-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  background: linear-gradient(to bottom, #4f46e5, #38bdf8);
+  z-index: 0;
+  transition: height 0.5s ease-out;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  width: 40%;
+  background: rgba(30, 41, 59, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+}
+
+.card p {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.card-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.card.left {
+  text-align: right;
+  align-items: end;
+}
+
+.card.right {
+  text-align: left;
+  align-items: start;
+}
+
+.dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: #4f46e5;
+  border: 4px solid #0d1117;
+  border-radius: 50%;
+  z-index: 5;
+  top: 50%;
+}
+
+.year {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .timeline-row {
+    flex-direction: column;
+    align-items: center;
+    margin: 80px 0;
+  }
+
+  .card {
+    width: 85%;
+    text-align: center !important;
+  }
+
+  .card.left,
+  .card.right {
+    text-align: center;
+  }
+
+  .vertical-line {
+    left: 50%;
+  }
+
+  .dot {
+    top: 0;
+    margin-top: 20px;
+  }
+}
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #38bdf8;
+}
+.card-icon {
+  font-size: 2rem;
+  color: #38bdf8;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.vertical-line {
+  transition: height 0.4s ease;
+}
