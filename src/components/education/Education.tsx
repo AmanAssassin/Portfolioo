@@ -1,109 +1,96 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
+import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 import { motion, useInView } from "framer-motion";
-import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import { FaGraduationCap, FaBriefcase , FaCode} from "react-icons/fa";
 import "./Education.css";
 
 const timelineData = [
   {
-    year: "2021",
-    education: "B.Tech CSE - RLB Tech College",
-    internship: "Frontend Intern at XYZ Pvt Ltd",
+   date: "2024 - Present",
+    title: "Network Engineer at NTT Data",
+    subtitle: "Gurugram, India",
+    icon: <FaBriefcase />,
   },
   {
-    year: "2022",
-    education: "React Course & Projects",
-    internship: "Intern at ABC Web Solutions",
+    date: "2019 - 2023",
+    title: "B.Tech - CSE, 8.3 CGPA",
+    subtitle: "School of Management Sciences, Lucknow, Uttar Pradesh",
+    icon: <FaGraduationCap />,
   },
   {
-    year: "2023",
-    education: "Open Source Contributions",
-    internship: "Frontend Developer - Remote",
+    date: "2022",
+    title: "Hacktoberfest 2022 - Open Source Contributor",
+    subtitle: "Contribution - Remote",
+    icon: <FaCode />,
   },
   {
-    year: "2024",
-    education: "Learning TypeScript & Next.js",
-    internship: "Intern at The Internet Folks",
+    date: "2021",
+    title: "Hacktoberfest 2021 - Open Source Contributor",
+    subtitle: "Contribution - Remote",
+    icon: <FaCode />,
   },
   {
-    year: "2025",
-    education: "Freelance Projects",
-    internship: "Developer at CryptoMarket",
+    date: "2021",
+    title: "LetsGrowMore - Open Source Contributor",
+    subtitle: "Internship (June – August)",
+    icon: <FaCode />,
   },
+  {
+   date: "2021",
+    title: "NeoDocto Web Development Internship",
+    subtitle: "Internship",
+    icon: <FaBriefcase />,
+  },
+  
 ];
 
 const Education: React.FC = () => {
-  const verticalLineRef = useRef<HTMLDivElement>(null);
-  const [activeYear, setActiveYear] = useState<string>(timelineData[0].year);
-
-  const handleScroll = () => {
-    const sections = document.querySelectorAll(".timeline-row");
-    let closestIndex = 0;
-    let closestDistance = Infinity;
-
-    sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const distance = Math.abs(rect.top);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
-
-    setActiveYear(timelineData[closestIndex].year);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <section className="timeline-section">
       <h2 className="timeline-heading">Timeline</h2>
-      <div className="sticky-year">{activeYear}</div>
       <div className="timeline-wrapper">
-        <div className="vertical-line" ref={verticalLineRef} />
-        {timelineData.map((item, index) => {
-          const eduRef = useRef(null);
-          const internRef = useRef(null);
-          const eduInView = useInView(eduRef, { margin: "-100px 0px -100px 0px" });
-const internInView = useInView(internRef, { margin: "-100px 0px -100px 0px" });
+        <VerticalTimeline lineColor="#4f46e5">
+          {timelineData.map((item, index) => {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: false, margin: "-100px" });
 
-
-          return (
-            <div className="timeline-row" key={index} id={`year-${item.year}`}>
-              <motion.div
-                ref={eduRef}
-                className="card left"
-                initial={{ opacity: 0, x: -100 }}
-                animate={eduInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 40 }}
+            return (
+              <VerticalTimelineElement
+                key={index}
+                contentStyle={{
+                  background: "#1e293b",
+                  color: "#fff",
+                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.4)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+                contentArrowStyle={{ borderRight: "7px solid #4f46e5" }}
+                date={<div style={{ color: "#94a3b8" }}>{item.date}</div>}
+                  iconStyle={{
+                    background: "#0d1117",
+                    color: "#38bdf8",
+                    fontSize: "1.5rem",
+                    display: "flex",
+                    // alignItems: "center",
+                    // justifyContent: "center",
+                  }}
+                icon={item.icon}
               >
-                <FaGraduationCap className="card-icon" />
-                <p>{item.education}</p>
-                <p className="year">{item.year}</p>
-              </motion.div>
-
-              <span
-                className="dot"
-                title={`Year: ${item.year}`}
-                style={{ backgroundColor: `hsl(${index * 72}, 80%, 60%)` }}
-              />
-
-              <motion.div
-                ref={internRef}
-                className="card right"
-                initial={{ opacity: 0, x: 100 }}
-                animate={internInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 40 }}
-              >
-                <FaBriefcase className="card-icon" />
-                <p>{item.internship}</p>
-                <p className="year">{item.year}</p>
-              </motion.div>
-            </div>
-          );
-        })}
+                <motion.div
+                  ref={ref}
+                  // initial={{ opacity: 0, y: 100 }}
+                  // animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+                  transition={{ duration: 0.6, type: "spring", stiffness: 40 }}
+                >
+                  <h3 className="vertical-timeline-element-title">{item.title}</h3>
+                  <h4 className="vertical-timeline-element-subtitle" style={{ color: "#94a3b8" }}>
+                    {item.subtitle}
+                  </h4>
+                </motion.div>
+              </VerticalTimelineElement>
+            );
+          })}
+        </VerticalTimeline>
       </div>
     </section>
   );
