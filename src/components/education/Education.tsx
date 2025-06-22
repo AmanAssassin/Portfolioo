@@ -47,7 +47,7 @@ const timelineData = [
 
 const Education: React.FC = () => {
   return (
-    <section className="timeline-section">
+    <section id="education" className="timeline-section">
       <h2 className="timeline-heading">Timeline</h2>
       <div className="timeline-wrapper">
         <VerticalTimeline lineColor="#4f46e5">

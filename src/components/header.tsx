@@ -2,11 +2,15 @@
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 
+import Education from "./education/Education.tsx"
+
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
+
 ]
 
 export function Header() {
