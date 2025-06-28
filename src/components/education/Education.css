@@ -12,6 +12,7 @@
   margin-bottom: 80px;
 }
 
+
 .vertical-timeline-element-title {
   font-size: 1.25rem;
   font-weight: 600;
@@ -28,24 +29,30 @@
   overflow: visible !important;
 }
 
-/* 🎯 Subtle shadow and background polish for cards */
+/* 🎯 Glassy Background with Blur & Shadow */
 .vertical-timeline-element-content {
-  backdrop-filter: blur(10px);
-  border-radius: 12px !important;
-  background: rgba(30, 41, 59, 0.85) !important; /* dark navy background */
+  backdrop-filter: blur(16px);
+  background: rgba(30, 41, 59, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px !important;
   box-shadow:
-    0 6px 18px rgba(79, 70, 229, 0.15),   /* soft indigo shadow */
-    0 4px 12px rgba(56, 189, 248, 0.08);  /* faint blue glow */
+    0 10px 30px rgba(79, 70, 229, 0.2),
+    0 6px 20px rgba(56, 189, 248, 0.12);
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Optional: Gentle lift on hover */
+/* 🌀 Tilt + Glow on Hover */
 .vertical-timeline-element:hover .vertical-timeline-element-content {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow:
-    0 10px 24px rgba(79, 70, 229, 2),
-    0 6px 16px rgba(56, 189, 248, 2);
-  border: 1px solid rgba(79, 70, 229, 5); /* optional glowing border */
+    0 15px 30px rgba(79, 70, 229, 0.4),
+    0 8px 24px rgba(56, 189, 248, 0.3);
+  border: 1px solid rgba(79, 70, 229, 0.5);
+}
+
+/* 💎 Optional: Animate fade + tilt using class, if not using framer-motion */
+.motion-card {
+  will-change: transform, opacity;
 }

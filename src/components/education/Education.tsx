@@ -1,13 +1,16 @@
 import React, { useRef } from "react";
-import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { motion, useInView } from "framer-motion";
-import { FaGraduationCap, FaBriefcase , FaCode} from "react-icons/fa";
+import { FaGraduationCap, FaBriefcase, FaCode } from "react-icons/fa";
 import "./Education.css";
 
 const timelineData = [
   {
-   date: "2024 - Present",
+    date: "2024 - Present",
     title: "Network Engineer at NTT Data",
     subtitle: "Gurugram, India",
     icon: <FaBriefcase />,
@@ -37,12 +40,11 @@ const timelineData = [
     icon: <FaCode />,
   },
   {
-   date: "2021",
+    date: "2021",
     title: "NeoDocto Web Development Internship",
     subtitle: "Internship",
     icon: <FaBriefcase />,
   },
-  
 ];
 
 const Education: React.FC = () => {
@@ -53,41 +55,57 @@ const Education: React.FC = () => {
         <VerticalTimeline lineColor="#4f46e5">
           {timelineData.map((item, index) => {
             const ref = useRef(null);
-            const isInView = useInView(ref, { once: false, margin: "-100px" });
+            const isInView = useInView(ref, {
+              once: false,
+              margin: "-100px",
+            });
+
+            const isEven = index % 2 === 0;
+            const slideDirection = isEven ? -100 : 100;
 
             return (
-              <VerticalTimelineElement
+              <motion.div
                 key={index}
-                contentStyle={{
-                  background: "#1e293b",
-                  color: "#fff",
-                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.4)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-                contentArrowStyle={{ borderRight: "7px solid #4f46e5" }}
-                date={<div style={{ color: "#94a3b8" }}>{item.date}</div>}
+                ref={ref}
+                initial={{ opacity: 0, x: slideDirection }}
+                animate={
+                  isInView
+                    ? { opacity: 1, x: 0 }
+                    : { opacity: 0, x: slideDirection }
+                }
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <VerticalTimelineElement
+                style={{ marginBottom: "60px" }}
+                  position={isEven ? "left" : "right"}
+                  contentStyle={{
+                    background: "#1e293b",
+                    color: "#fff",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                  }}
+                  contentArrowStyle={{ borderRight: "7px solid #4f46e5" }}
+                  date={<div style={{ color: "#94a3b8" }}>{item.date}</div>}
                   iconStyle={{
                     background: "#0d1117",
                     color: "#38bdf8",
                     fontSize: "1.5rem",
-                    display: "flex",
-                    // alignItems: "center",
-                    // justifyContent: "center",
+                    boxShadow: "0 0 12px #38bdf8",
                   }}
-                icon={item.icon}
-              >
-                <motion.div
-                  ref={ref}
-                  // initial={{ opacity: 0, y: 100 }}
-                  // animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-                  transition={{ duration: 0.6, type: "spring", stiffness: 40 }}
+                  icon={item.icon}
                 >
-                  <h3 className="vertical-timeline-element-title">{item.title}</h3>
-                  <h4 className="vertical-timeline-element-subtitle" style={{ color: "#94a3b8" }}>
-                    {item.subtitle}
-                  </h4>
-                </motion.div>
-              </VerticalTimelineElement>
+                  <div>
+                    <h3 className="vertical-timeline-element-title">
+                      {item.title}
+                    </h3>
+                    <h4
+                      className="vertical-timeline-element-subtitle"
+                      style={{ color: "#94a3b8" }}
+                    >
+                      {item.subtitle}
+                    </h4>
+                  </div>
+                </VerticalTimelineElement>
+              </motion.div>
             );
           })}
         </VerticalTimeline>

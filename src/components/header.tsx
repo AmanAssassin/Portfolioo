@@ -1,8 +1,5 @@
-
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
-
-import Education from "./education/Education.tsx"
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -10,7 +7,6 @@ const navLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Timeline", href: "#education" },
   { name: "Contact", href: "#contact" },
-
 ]
 
 export function Header() {
@@ -19,11 +15,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 20)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -45,13 +37,13 @@ export function Header() {
             Aman<span className="text-indigo-500">.</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with Pop Hover */}
           <nav className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-300 hover:text-white text-sm transition-colors"
+                className="text-gray-300 hover:text-white text-sm transition-transform duration-200 hover:scale-110"
               >
                 {link.name}
               </a>
@@ -105,7 +97,7 @@ export function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-300 hover:text-white text-sm transition-colors"
+                  className="text-gray-300 hover:text-white text-sm transition-transform duration-200 hover:scale-105"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}

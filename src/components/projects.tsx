@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Globe2, Github } from "lucide-react";
 import meshoImg from "../asset/meshop.png";
 import portfolioImg from "../asset/portfolio.png";
 import qtripImg from "../asset/qtrip.png";
 import cryptoImg from "../asset/crypto_img.png";
-
 
 const projects = [
   {
@@ -13,8 +11,8 @@ const projects = [
     description: "A modern portfolio built with React and Next.js",
     tags: ["React", "Next.js", "Tailwind CSS"],
     image: portfolioImg,
-    link: "https://portfolio-xi-sooty-88.vercel.app/",
-    github: "https://github.com/aman-webdev/portfolio",
+    link: "https://amanmdev.vercel.app/",
+    github: "https://github.com/AmanAssassin/Portfolioo.git",
   },
   {
     title: "Crypto Market",
@@ -26,11 +24,11 @@ const projects = [
   },
   {
     title: "Mesho App",
-    description: "E-commerce platform with cart functionality ",
+    description: "E-commerce platform with cart functionality",
     tags: ["React", "Context API", "Styled Components"],
     image: meshoImg,
     link: "https://shop-cart-hazel-one.vercel.app/",
-    github: "https://github.com/aman-webdev/shop-cart",
+    github: "https://github.com/AmanAssassin/Shop-cart.git",
   },
   {
     title: "Q-trip",
@@ -40,11 +38,16 @@ const projects = [
     link: "https://qtrips-dynamic.netlify.app/",
     github: "https://github.com/aman-webdev/qtrip-dynamic",
   },
-  //new project goes here
 ];
 
 export function Projects() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+
+  const filteredProjects = activeTag
+    ? projects.filter((project) => project.tags.includes(activeTag))
+    : projects;
+
+  const uniqueTags = Array.from(new Set(projects.flatMap((p) => p.tags)));
 
   return (
     <section id="projects" className="py-24 bg-[#060606]">
@@ -53,88 +56,79 @@ export function Projects() {
           My <span className="text-indigo-500">Projects</span>
         </h2>
 
+        {/* Filter Bar */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {uniqueTags.map((tag) => (
+            <button
+              key={tag}
+              onClick={() =>
+                setActiveTag((prev) => (prev === tag ? null : tag))
+              }
+              className={`px-4 py-1 rounded-full text-sm transition-all duration-300 border ${
+                activeTag === tag
+                  ? "bg-indigo-600 text-white border-indigo-600"
+                  : "border-indigo-700 text-indigo-300 hover:bg-indigo-700 hover:text-white"
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+
+        {/* Project Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => {
-            const isActive = activeIndex === index;
+          {filteredProjects.map((project, index) => (
+            <div
+              key={index}
+              className="flex flex-col justify-between h-full rounded-2xl overflow-hidden backdrop-blur-md border border-white/10 bg-[#1e293b]/70 shadow-[0_6px_18px_rgba(79,70,229,0.15),_0_4px_12px_rgba(56,189,248,0.08)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_24px_rgba(79,70,229,0.4),_0_6px_16px_rgba(56,189,248,0.4)]"
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-48 object-cover rounded-t-xl"
+              />
 
-            return (
-              <div
-                key={index}
-                className="relative h-[380px] w-full flex items-center justify-center cursor-pointer"
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                onClick={() =>
-                  setActiveIndex((prev) => (prev === index ? null : index))
-                }
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-xl p-6 shadow-xl flex flex-col transition-all duration-300"
-                  animate={{
-                    scale: isActive ? 0.9 : 1,
-                    opacity: isActive ? 0 : 1,
-                    filter: isActive ? "blur(4px)" : "blur(0px)",
-                  }}
-                >
-                  <div className="h-48 mb-4 rounded-lg overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="text-xs px-2 py-1 bg-indigo-900/30 text-indigo-300 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 text-sm mb-4">
+                  {project.description}
+                </p>
 
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      className="absolute flex gap-6 z-10"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs px-3 py-1 bg-indigo-900/30 text-indigo-300 rounded-full"
                     >
-                      <motion.a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative p-4 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-2xl flex items-center justify-center"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Globe2 className="text-white w-6 h-6 z-10" />
-                      </motion.a>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative p-4 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-2xl flex items-center justify-center"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Github className="text-gray-900 w-6 h-6 z-10" />
-                      </motion.a>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Bottom Links */}
+                <div className="flex justify-between items-center border-t border-white/10 pt-4 mt-auto">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-indigo-400 hover:text-white transition text-sm"
+                  >
+                    <Globe2 className="w-5 h-5" /> Live Demo
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-300 hover:text-white transition text-sm"
+                  >
+                    <Github className="w-5 h-5" /> GitHub
+                  </a>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
