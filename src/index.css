@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,6 +42,7 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --shadow-glow: 0 0 10px hsla(245, 100%, 65%, 0.4);
   }
 
   .dark {
@@ -83,88 +83,78 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
-html {
-  scroll-behavior: smooth;
-}
 
+  html {
+    scroll-behavior: smooth;
+    @apply bg-[#060606] text-white scroll-smooth;
+  }
 
-/* Set dark mode by default */
-html {
-  @apply bg-[#060606] text-white scroll-smooth;
-}
-
-@layer base {
   * {
     @apply border-border;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3s, opacity 0.3s;
   }
 
   body {
     @apply bg-[#060606] text-foreground font-sans;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl;
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
   }
 
   .text-gradient {
     @apply bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent;
   }
+
+  .fps-smooth {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
 }
 
-/* Animation keyframes */
+/* Animations */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 @keyframes wave {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-/* Scrollbar styling */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #555, #333);
+  border-radius: 6px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
 
-/* Disable outline on click for cleaner visuals */
+/* Remove default focus outline */
 :focus {
   outline: none;
 }
 
-/* Smooth transition for all elements */
-* {
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3s, opacity 0.3s;
-}
-
+/* Mobile adjustments */
 @media (max-width: 640px) {
   .card {
-    padding: 1.25rem; /* reduce padding on small screens */
-    text-align: left; /* better alignment */
+    padding: 1.25rem;
+    text-align: left;
   }
 
   .card .buttons,
@@ -183,4 +173,3 @@ html {
     font-size: 0.875rem;
   }
 }
-

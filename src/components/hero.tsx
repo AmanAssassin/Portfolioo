@@ -1,7 +1,9 @@
-import { ButtonGlow } from "@/components/ui/button-glow"
-import { Squares } from "@/components/ui/squares-background"
-import { GradientTracing } from "@/components/ui/gradient-tracing"
-import AnimatedTextCycle from "@/components/ui/animated-text-cycle"
+import { ButtonGlow } from "@/components/ui/button-glow";
+import { Squares } from "@/components/ui/squares-background";
+import { GradientTracing } from "@/components/ui/gradient-tracing";
+import AnimatedTextCycle from "@/components/ui/animated-text-cycle";
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   return (
@@ -49,7 +51,14 @@ export function Hero() {
                 <a href="#projects">View My Work</a>
               </ButtonGlow>
               <ButtonGlow className="bg-black text-white hover:bg-gray-800 transition duration-300">
-                <a href="https://drive.google.com/file/d/1fAyOFkD2eL5eOXhyXRcNjKexaLrSk3oh/view?usp=sharing" target="_blank" className="text-white hover:text-gray-300">Resume</a>
+                <a
+                  href="https://drive.google.com/file/d/1fAyOFkD2eL5eOXhyXRcNjKexaLrSk3oh/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-gray-300"
+                >
+                  Resume
+                </a>
               </ButtonGlow>
             </div>
             
@@ -67,9 +76,28 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer z-20"
+        initial={{ y: 0 }}
+        animate={{ y: [0, 8, 0] }}
+        transition={{
+          duration: 1.6,
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "easeInOut",
+        }}
+        onClick={() => {
+          const section = document.querySelector("#about");
+          section?.scrollIntoView({ behavior: "smooth" });
+        }}
+      >
+        <ChevronDown className="w-6 h-6 text-violet-400 opacity-70 hover:opacity-100 transition-all duration-300" />
+      </motion.div>
       
       {/* Gradient Overlay */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060606] to-transparent"></div>
     </section>
-  )
+  );
 }

@@ -1,23 +1,35 @@
+:root {
+  --max-width: 1280px;
+  --primary-shadow: drop-shadow(0 0 2em #646cffaa);
+  --react-shadow: drop-shadow(0 0 2em #61dafbaa);
+  --transition-duration: 300ms;
+  --padding-desktop: 2rem;
+  --padding-mobile: 1rem;
+  --text-color-muted: #888;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--padding-desktop);
   text-align: center;
 }
 
+/* ==== Logo Styling ==== */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter var(--transition-duration);
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: var(--primary-shadow);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: var(--react-shadow);
 }
 
+/* ==== Logo Spin Animation (when prefers-reduced-motion is disabled) ==== */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,18 +45,21 @@
   }
 }
 
+/* ==== Card Styling ==== */
 .card {
   padding: 2em;
 }
 
+/* ==== Info Text ==== */
 .read-the-docs {
-  color: #888;
+  color: var(--text-color-muted);
+  font-size: 1rem;
 }
 
 /* ===== Mobile Responsive Styling ===== */
 @media screen and (max-width: 768px) {
   #root {
-    padding: 1rem;
+    padding: var(--padding-mobile);
   }
 
   .logo {
@@ -57,7 +72,7 @@
   }
 
   .read-the-docs {
-    font-size: 0.9em;
+    font-size: 0.9rem;
   }
 }
 
@@ -72,6 +87,6 @@
   }
 
   .read-the-docs {
-    font-size: 0.8em;
+    font-size: 0.85rem;
   }
 }
