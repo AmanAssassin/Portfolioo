@@ -58,7 +58,7 @@ export function Hero() {
               </ButtonGlow>
               <ButtonGlow className="bg-black text-white hover:bg-gray-800 transition min-w-[150px] py-3 px-6 text-sm sm:text-base">
                 <a
-                  href="https://drive.google.com/file/d/1fAyOFkD2eL5eOXhyXRcNjKexaLrSk3oh/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1H_VgsnSHTXATxJ9xOCliSmw_cF05mhsC/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
