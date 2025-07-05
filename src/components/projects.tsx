@@ -4,6 +4,7 @@ import meshoImg from "../asset/meshop.png";
 import portfolioImg from "../asset/portfolio.png";
 import qtripImg from "../asset/qtrip.png";
 import cryptoImg from "../asset/crypto_img.png";
+import todo from "../asset/Todo.jpeg"
 
 const projects = [
   {
@@ -21,6 +22,14 @@ const projects = [
     image: cryptoImg,
     link: "https://crypto-market-rho.vercel.app/",
     github: "https://github.com/AmanAssassin/Crypto-Market",
+  },
+  {
+    title: "Modern Glass Todo",
+    description: "A sleek, glassmorphism-style todo app with animated filters, localStorage sync, toast notifications, and a responsive UI.",
+    tags: ["React", "Tailwind CSS", "Framer Motion", "LocalStorage", "React Hot Toast"],
+    image: todo, // Replace this with your actual image import
+    link: "https://todo-app-orpin-eta.vercel.app/", // Replace with your deployed Vercel link
+    github: "https://github.com/AmanAssassin/TODO-app.git", // Replace with your repo URL
   },
   {
     title: "Mesho App",
@@ -85,7 +94,7 @@ export function Projects() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-48 object-cover rounded-t-xl"
+                className="w-full h-48 object-contain bg-black p-2 rounded-t-xl"
               />
 
               <div className="p-6 flex flex-col flex-grow">
